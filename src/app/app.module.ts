@@ -5,8 +5,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
-
-
+import {ToastModule} from 'primeng/toast';
+import {DialogModule} from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PaginatorModule} from 'primeng/paginator';
+import {InputTextModule} from 'primeng/inputtext';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,6 +21,13 @@ import {CardModule} from 'primeng/card';
     HttpClientModule,
     ButtonModule,
     CardModule,
+    ToastModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    PaginatorModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
