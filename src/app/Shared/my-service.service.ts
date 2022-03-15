@@ -18,6 +18,6 @@ export class MyServiceService {
   }
 
   updateData(data:any){
-    return this.http.put(this.apiGet+"/"+data.id,data);
+    return this.http.post(this.apiGet+`/${data.id}`,data);
   }
 }

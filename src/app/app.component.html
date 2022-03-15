@@ -3,41 +3,80 @@
     <h1>Users Table</h1>
   </ng-template> -->
 
-  <p-table [value]="myData" responsiveLayout="scroll" styleClass="p-datatable-gridlines">
+  <div class="container-flex">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <th>Company Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of myData">
+          <td>{{data.name}}</td>
+          <td>{{data.username}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.address.city}}</td>
+          <td>{{data.phone}}</td>
+          <td>{{data.website}}</td>
+          <td>{{data.company.name}}</td>
+          <td>
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-primary btn-sm" (click)="onClickEdit(data)">edit</button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="onClickDelete(data.id)">delete</button>
+            </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- <p-table [value]="myData" styleClass="p-datatable-gridlines" [rows]="5" [paginator]="true" [rowHover]="true"
+    styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
     <ng-template pTemplate="header">
       <tr>
-        <th style="text-align: center;">Name</th>
-        <th style="text-align: center;">User Name</th>
-        <th style="text-align: center;">Email</th>
-        <th style="text-align: center;">City</th>
-        <th style="text-align: center;">Phone</th>
-        <th style="text-align: center;">Website</th>
-        <th style="text-align: center;">Company Name</th>
-        <th style="text-align: center;"></th>
+        <th>Name</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Company Name</th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr>
-        <td style="text-align: center;">{{data.name}}</td>
-        <td style="text-align: center;">{{data.username}}</td>
-        <td style="text-align: center;">{{data.email}}</td>
-        <td style="text-align: center;">{{data.address.city}}</td>
-        <td style="text-align: center;">{{data.phone}}</td>
-        <td style="text-align: center;">{{data.website}}</td>
-        <td style="text-align: center;">{{data.company.name}}</td>
-        <td style="text-align: center;">
-          <button pButton type="button" label="edit" class="p-button-sm p-button-warning"
-            (click)="onClickEdit(data)"></button>
-          <p></p>
-          <button pButton type="button" label="delete" class="p-button-sm p-button-danger"
-            (click)="onClickDelete(data.id)"></button>
+        <td>{{data.name}}</td>
+        <td>{{data.username}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.address.city}}</td>
+        <td>{{data.phone}}</td>
+        <td>{{data.website}}</td>
+        <td>{{data.company.name}}</td>
+        <td>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary btn-sm" (click)="onClickEdit(data)">edit</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="onClickDelete(data.id)">delete</button>
+          </div>
         </td>
       </tr>
     </ng-template>
-  </p-table>
+  </p-table> -->
 
-  <ng-template pTemplate="footer">
-    <p-paginator [rows]="5" [totalRecords]="10"></p-paginator>
+  <ng-template pTemplate="footer" style="text-align: center;">
+    <!-- <p-paginator [rows]="5" [totalRecords]="10"></p-paginator> -->
+    <!-- <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="sizeOf" (changePage)="onChangePage($event)"></ngb-pagination> -->
+    <p-paginator [rows]="5" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20,30]"
+      (onPageChange)="onPageChange($event)"></p-paginator>
+
+    <!-- <p-paginator [rows]="5" [totalRecords]="10" [rowsPerPageOptions]="[5,10,20,30]"></p-paginator> -->
   </ng-template>
 </p-card>
 
@@ -55,12 +94,13 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Email</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Email" formControlName="email">
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Email"
+        formControlName="email">
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">City</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="city"
-        placeholder="Enter City">
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        formControlName="city" placeholder="Enter City">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Phone</label>
@@ -68,11 +108,13 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Website</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="website">
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
+        formControlName="website">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Company Name</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="company">
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
+        formControlName="company">
     </div>
   </form>
 

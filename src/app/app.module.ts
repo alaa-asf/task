@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PaginatorModule} from 'primeng/paginator';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent
@@ -27,7 +28,8 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
     InputTextModule,
     PaginatorModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
